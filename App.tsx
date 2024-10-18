@@ -8,6 +8,7 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -18,17 +19,19 @@ import {
 } from 'react-native';
 
 import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
+  Colors, DebugInstructions, Header,  LearnMoreLinks,  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
+import siteLogo from './src/assets/images/sdcLogo.png';
 
+const myStyles = StyleSheet.create({
+  tiniLogo: {
+    width: 80,
+    height: 80
+  }
+})
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -77,6 +80,9 @@ function App(): React.JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Text>SDC</Text>
+          <View>
+            <Image source={siteLogo} style={myStyles.tiniLogo} />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
