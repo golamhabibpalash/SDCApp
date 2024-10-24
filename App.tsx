@@ -15,6 +15,7 @@ import {
 
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
+import HomeScreen from './src/screens/Home/HomeScreen';
 
 const myStyles = StyleSheet.create({
   tiniLogo: {
@@ -33,7 +34,8 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
       <View style={{ paddingTop: StatusBar.currentHeight }}>
-        <LoginScreen />
+        {/* <LoginScreen /> */}
+        <HomeScreen />
       </View>
     </SafeAreaView>
 
