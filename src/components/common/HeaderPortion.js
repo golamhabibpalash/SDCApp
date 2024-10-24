@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import appConfig from '../../../app.json';
 import imagelink from '../../assets/images/sdcLogo.png'
+import { colors } from '../../styles/colors';
+import Feather from 'react-native-vector-icons/Feather';
 const HeaderPortion = () => {
 
     const fullName = appConfig.fullName;
@@ -15,9 +15,9 @@ const HeaderPortion = () => {
                 <Text style={styles.text}>{fullName}</Text>
 
             </View>
-            <Entypo name="user" size={30} color="#000" />
-            <FontAwesome name="home" size={30} color="black" />
-            <Feather name="user" size={30} color="black" />
+            <View style={styles.iconWrapper}>
+                <Feather name="user" size={30} color="#fff" />
+            </View>
         </View>
     )
 }
@@ -47,5 +47,10 @@ const styles = StyleSheet.create({
         color: 'green',
         paddingLeft: 5
     },
+    iconWrapper: {
+        backgroundColor: colors.primary,
+        padding: 10,
+        borderRadius: 30
+    }
 });
 export default HeaderPortion;

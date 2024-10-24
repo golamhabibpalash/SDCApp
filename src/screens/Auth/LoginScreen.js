@@ -4,22 +4,22 @@ import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, Sta
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import appLogo from '../../../src/assets/images/sdcLogo.png'
 import { colors } from '../../styles';
+import appConfig from '../../../app.json';
+import { useNavigation } from '@react-navigation/native';
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setlogin] = useState('');
-
+    const navigation = useNavigation();
     const handleLogin = () => {
-        // Dummy login function, replace with your own logic
-        // const userData = { email };
-        // login(userData); // Call login function from context
+        navigation.navigate('Home');
     };
 
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor={colors.primary} />
             <Image source={appLogo} style={styles.logo} />
-            <Text style={styles.title}>Survey & Data Consultant</Text>
+            <Text style={styles.title}>{appConfig.fullName}</Text>
 
             <View style={styles.inputContainer}>
                 <TextInput
@@ -27,6 +27,7 @@ const LoginScreen = () => {
                     placeholder="Email/Username"
                     value={email}
                     onChangeText={setEmail}
+                    placeholderTextColor={'#000'}
                 />
                 <TextInput
                     style={styles.input}
@@ -34,6 +35,7 @@ const LoginScreen = () => {
                     secureTextEntry={true}
                     value={password}
                     onChangeText={setPassword}
+                    placeholderTextColor={'#000'}
 
                 />
                 <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
@@ -52,12 +54,15 @@ const LoginScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        height: '100%',
         alignItems: 'center',
+        backgroundColor: '#fff'
     },
     logo: {
         width: 100,
         height: 100,
         marginBottom: 20,
+        marginTop: 10
     },
     title: {
         fontSize: 24,
@@ -78,6 +83,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 10,
         marginBottom: 10,
+        color: '#000',
+        marginTop: 5,
     },
     loginButton: {
         backgroundColor: colors.primary,

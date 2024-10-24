@@ -16,6 +16,8 @@ import {
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
 import HomeScreen from './src/screens/Home/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const myStyles = StyleSheet.create({
   tiniLogo: {
@@ -24,23 +26,19 @@ const myStyles = StyleSheet.create({
   },
 });
 
+const Stack = createNativeStackNavigator();
+
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
 
   return (
-    <SafeAreaView >
-      <StatusBar backgroundColor={'red'}
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-      />
-      <View style={{ paddingTop: StatusBar.currentHeight }}>
-        {/* <LoginScreen /> */}
-        <HomeScreen />
-      </View>
-    </SafeAreaView>
-
-
-    
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen name='Login' component={LoginScreen} options={{headerShown:false}}/>
+        <Stack.Screen name='Home' component={HomeScreen} options={{headerShown:false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
