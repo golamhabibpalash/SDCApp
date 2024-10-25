@@ -17,6 +17,10 @@ const typography = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  titleText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  }
 });
 
 export default typography;

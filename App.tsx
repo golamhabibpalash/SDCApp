@@ -18,6 +18,7 @@ import LoginScreen from './src/screens/Auth/LoginScreen';
 import HomeScreen from './src/screens/Home/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import EmployeeScreen from './src/screens/Employee/EmployeeScreen';
 
 const myStyles = StyleSheet.create({
   tiniLogo: {
@@ -37,6 +38,7 @@ function App(): React.JSX.Element {
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name='Login' component={LoginScreen} options={{headerShown:false}}/>
         <Stack.Screen name='Home' component={HomeScreen} options={{headerShown:false}}/>
+        <Stack.Screen name='Employee' component={EmployeeScreen} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
