@@ -109,20 +109,23 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
         borderBottomWidth: 1,
         borderBottomColor: '#000',
+        paddingVertical: 5
     },
     cell: {
         textAlign: 'center',
         color: '#000',
         borderRightWidth: 0.5,
         borderRightColor: '#000',
-        padding: 5
+        padding: 5,
+        fontSize: 12,
     },
     headerCell: {
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#fff',
         borderRightWidth: 0.5,
-        borderRightColor: '#000'
+        borderRightColor: '#000',
+        fontSize: 12
     },
     photo: {
         width: 20,
