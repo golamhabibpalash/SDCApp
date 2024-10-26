@@ -8,7 +8,7 @@ const HomeButton = ({ iconLibrary, iconName, buttonName, onPress }) => {
         <TouchableOpacity style={styles.button} onPress={onPress}>
             <View style={styles.buttonContent}>
                 <Feather name={iconName} color={'#000'} size={40} />
-                <Text style={[typography.homeButtonText, styles.buttonText]}>{buttonName}</Text>
+                <Text style={[styles.buttonText]}>{buttonName}</Text>
             </View>
         </TouchableOpacity>
     )

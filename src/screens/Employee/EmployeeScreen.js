@@ -1,7 +1,8 @@
 import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import HeaderPortion from '../../components/common/HeaderPortion'
-import { typography } from '../../styles'
+import { colors, typography } from '../../styles'
+import Feather from 'react-native-vector-icons/Feather'
 
 const EmployeeScreen = () => {
     const employeeData = [
@@ -37,25 +38,32 @@ const EmployeeScreen = () => {
     // Render function for each row
     const renderItem = ({ item }) => (
         <View style={styles.row}>
-            <Text style={styles.cell}>{item.id}</Text>
-            <Image source={{ uri: item.photo }} style={styles.photo} />
-            <Text style={styles.cell}>{item.name}</Text>
-            <Text style={styles.cell}>{item.designation}</Text>
-            <Text style={styles.cell}>{item.phone}</Text>
-            <TouchableOpacity style={styles.actionButton}>
-                <Text style={styles.actionText}>Edit</Text>
+            <Text style={[styles.cell, styles.indexCol]}>{item.id}</Text>
+            <Text style={[styles.photoCol]}>
+
+                <Image source={{ uri: item.photo }} style={[styles.photo]} />
+
+            </Text>
+            <Text style={[styles.cell, styles.nameCol]}>{item.name}</Text>
+            <Text style={[styles.cell, styles.designationCol]}>{item.designation}</Text>
+            <Text style={[styles.cell, styles.phoneCol]}>{item.phone}</Text>
+            <TouchableOpacity style={[styles.actionButton]}>
+                <Text style={[styles.actionText,]}>
+                    <Feather name='eye' style={styles.actionIcon} />
+                    <Feather name='edit' style={styles.actionIcon} />
+                </Text>
             </TouchableOpacity>
         </View>
     );
     // Render function for header
     const renderHeader = () => (
         <View style={[styles.row, styles.headerRow]}>
-            <Text style={[styles.headerCell, { width: '5%' }]}>#</Text>
-            <Text style={[styles.headerCell, { width: '10%' }]}>Photo</Text>
-            <Text style={styles.headerCell}>Employee Name</Text>
-            <Text style={styles.headerCell}>Designation</Text>
-            <Text style={styles.headerCell}>Phone</Text>
-            <Text style={styles.headerCell}>Action</Text>
+            <Text style={[styles.headerCell, styles.indexCol]}>#</Text>
+            <Text style={[styles.headerCell, styles.photoCol]}>Photo</Text>
+            <Text style={[styles.headerCell, styles.nameCol]}>Employee Name</Text>
+            <Text style={[styles.headerCell, styles.designationCol]}>Designation</Text>
+            <Text style={[styles.headerCell, styles.phoneCol]}>Phone</Text>
+            <Text style={[styles.headerCell, styles.actionCol]}>Action</Text>
         </View>
     );
     return (
@@ -94,41 +102,60 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#000',
     },
     headerRow: {
-        backgroundColor: '#f2f2f2',
-        borderBottomWidth: 2,
+        backgroundColor: colors.primary,
+        borderBottomWidth: 1,
         borderBottomColor: '#000',
     },
     cell: {
-        flex: 1,
         textAlign: 'center',
         color: '#000',
-        borderLeftWidth: 1,
-        borderColor: '#ddd',
+        borderRightWidth: 0.5,
+        borderRightColor: '#000',
+        padding: 5
     },
     headerCell: {
-        flex: 1,
         fontWeight: 'bold',
         textAlign: 'center',
-        paddingHorizontal: 8,
-        color: '#000'
+        color: '#fff',
+        borderRightWidth: 0.5,
+        borderRightColor: '#000'
     },
     photo: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
+        width: 20,
+        height: 20,
+        borderRadius: 10,
     },
     actionButton: {
-        backgroundColor: '#3498db',
-        paddingHorizontal: 12,
-        paddingVertical: 6,
         borderRadius: 5,
     },
     actionText: {
-        color: '#fff',
+        color: colors.primary,
     },
+    actionIcon: {
+        paddingHorizontal: 5
+    },
+    indexCol: {
+        width: '5%'
+    },
+    photoCol: {
+        width: '10%'
+    },
+    nameCol: {
+        width: '30%',
+        textAlign: 'left'
+    },
+    designationCol: {
+        width: '25%'
+    },
+    phoneCol: {
+        width: '20%'
+    },
+    actionCol: {
+        width: '10%'
+    }
 
 })

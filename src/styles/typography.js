@@ -15,7 +15,6 @@ const typography = StyleSheet.create({
   },
   homeButtonText: {
     fontSize: 18,
-    fontWeight: 'bold',
   },
   titleText: {
     fontSize: 18,
