@@ -76,13 +76,19 @@ android {
 
     namespace "com.sdcapp"
     defaultConfig {
-        applicationId "com.sdcapp"
+        applicationId "com.sdc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
     signingConfigs {
+        release {
+            storeFile file('my-release-key.keystore')
+            storePassword '123456789'
+            keyAlias 'my-key-alias'
+            keyPassword '123456789'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -95,11 +101,9 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

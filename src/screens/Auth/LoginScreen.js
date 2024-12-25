@@ -18,35 +18,36 @@ const LoginScreen = () => {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor={colors.primary} />
-            <Image source={appLogo} style={styles.logo} />
-            <Text style={styles.title}>{appConfig.fullName}</Text>
+            <View style={styles.contentContainer}>
+                <Image source={appLogo} style={styles.logo} />
+                <Text style={styles.title}>{appConfig.fullName}</Text>
 
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email/Username"
-                    value={email}
-                    onChangeText={setEmail}
-                    placeholderTextColor={'#000'}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    value={password}
-                    onChangeText={setPassword}
-                    placeholderTextColor={'#000'}
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email/Username"
+                        value={email}
+                        onChangeText={setEmail}
+                        placeholderTextColor={'#000'}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        secureTextEntry
+                        value={password}
+                        onChangeText={setPassword}
+                        placeholderTextColor={'#000'}
+                    />
+                    <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                        <Text style={styles.loginButtonText}>Login</Text>
+                    </TouchableOpacity>
+                </View>
 
-                />
-                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                    <Text style={styles.loginButtonText}>Login</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.forgotPasswordTextContainer}>
-                <TouchableOpacity>
-                    <Text style={styles.forgotPasswordText}>Forget
-                        Password?</Text>
-                </TouchableOpacity>
+                <View style={styles.forgotPasswordTextContainer}>
+                    <TouchableOpacity>
+                        <Text style={styles.forgotPasswordText}>Forget Password?</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
@@ -54,9 +55,14 @@ const LoginScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        flex: 1,
+        backgroundColor: '#fff',
         alignItems: 'center',
-        backgroundColor: '#fff'
+        justifyContent: 'center',
+    },
+    contentContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     logo: {
         width: 100,
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
         color: colors.primary,
     },
     inputContainer: {
-        width: '85%',
+        width: 350,
         backgroundColor: '#EAEAEA',
         padding: 20,
         borderRadius: 10
